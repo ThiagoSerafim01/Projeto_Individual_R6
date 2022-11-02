@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+body {
+    background-image: url(../assets/imgs/grunge-wall-texture.jpg);
+    background-color: #FFFFFF;
+    width: 100%;
+}
+header{
+    --header-bg: #00000099;
+    --header-height: 80px;
+    height: var(--header-height);
+    background-color: var(--header-bg);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    transition: background-color 0.1s ease-in 0s;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    padding: 1vh 0;
+}
+a{
+    text-decoration: none;
+}
+.logotipo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    margin: 2vh 0;
+}
+.logotipo h1{
+    font-size: 5vh;
+    transition: 0.3s;
+    
+}
+.menu-lista{
+    display: flex;
+    align-items: center;
+}
+.menu-lista li{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    list-style: none;
+    margin: 0 2vh;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+}
+
+.menu-lista li a{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    
+    
+}
+.menu-lista li a:hover{
+    color: #1e90ff;
+    transition: 0.3s;
+}
+/*hover para aparecer a linha do link*/
+.menu-lista li a:after{
+    content: "";
+    position: absolute;
+    background-color: #1e90ff;
+    height: 2px;
+    width: 0;
+    left: 0px;
+    bottom: -6px;
+    transition: 0.3s;
+}
+.menu-lista li a:hover:after{
+    width: 100%;
+}   
+
+/* Main */
+
+.container-all {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+.six-invi{
+    margin-left: 2vw;
+    margin-top: 23vh;
+    border-radius: 40px;
+}
+.texto{
+    display: flex;
+     width: 50%;
+     flex-direction: column;
+     margin-top: 25vh;
+}
+.texto-inicial{
+    font-size: 2rem;
+    margin-left: 2vw;
+    text-shadow: 5px 1px 20px #FFFFFF;
+    color: #FFFFFF;
+}
+.sobre-invi{
+    margin-top: 5vh;
+    font-size: 1.5rem;
+    margin-left: 2vw;
+    text-shadow: 5px 1px 10px #FFFFFF;
+    color: #FFFFFF;
+}
