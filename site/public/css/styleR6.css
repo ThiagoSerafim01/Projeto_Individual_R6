@@ -5,12 +5,12 @@
   }
   
 body {
-    background-image: url(../assets/imgs/grunge-wall-texture.jpg);
-    background-color: #FFFFFF;
+    background-image: url(https://static-dm.akamaized.net/siege/prod/6b7885a09c1f3d4061157b6b5f04f481.png), url(https://static-dm.akamaized.net/siege/prod/f9b222cd800c493a01561af81c456fa0.png), url(https://static-dm.akamaized.net/siege/prod/c7b872203768028fdd4b6aed54c69ea3.png),url(https://static-dm.akamaized.net/siege/prod/5222e2b34a1864b076632b9b47dddaaa.png), url(https://static-dm.akamaized.net/siege/prod/7907369fa863844fc1ae432a9ca0e610.jpg), url(https://static-dm.akamaized.net/siege/prod/7907369fa863844fc1ae432a9ca0e610.jpg);
+    background-color: #FFFFFF; 
     width: 100%;
 }
 header{
-    --header-bg: #00000099;
+    --header-bg: #00000199;
     --header-height: 80px;
     height: var(--header-height);
     background-color: var(--header-bg);
@@ -111,7 +111,7 @@ a{
 .texto-inicial{
     font-size: 2rem;
     margin-left: 2vw;
-    text-shadow: 5px 1px 20px #FFFFFF;
+    text-shadow: 5px 1px 10px #FFFFFF;
     color: #FFFFFF;
 }
 .sobre-invi{
@@ -120,4 +120,49 @@ a{
     margin-left: 2vw;
     text-shadow: 5px 1px 10px #FFFFFF;
     color: #FFFFFF;
+}
+.linha-separacao{
+    margin-top: 10vh;
+     height: 4px;
+     background: #FFFFFF;
+     position: relative;
+}
+.sobre-jogo{
+    margin-top: 5rem;
+    background-image: url(https://static-dm.akamaized.net/siege/prod/6b7885a09c1f3d4061157b6b5f04f481.png), url(https://static-dm.akamaized.net/siege/prod/f9b222cd800c493a01561af81c456fa0.png), url(https://static-dm.akamaized.net/siege/prod/c7b872203768028fdd4b6aed54c69ea3.png),url(https://static-dm.akamaized.net/siege/prod/5222e2b34a1864b076632b9b47dddaaa.png), url(https://static-dm.akamaized.net/siege/prod/7907369fa863844fc1ae432a9ca0e610.jpg);
+}
+.oque_e_rainbow{
+    margin-bottom: 30px;
+    font-size: 80px;
+    line-height: 67px;
+    margin: 0;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
+    font-size: 80px;
+    line-height: 67px;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}
+.connheca-jogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 1em;
+    margin-block-end: 5em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+}
+.trailer{
+    margin-left: 35%;
+    justify-content: center;
+    align-items: center;
+    margin-block-end: 5em;
 }
