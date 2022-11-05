@@ -2,15 +2,23 @@
 * {
     margin: 0;
     box-sizing: border-box;
-  }
+}
+html{
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar { width: 12px; height: 3px;}
+::-webkit-scrollbar-track-piece { background-color: #3a3a3a;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #959595; border-radius: 3px;}
   
 body {
     background-image: url(https://static-dm.akamaized.net/siege/prod/6b7885a09c1f3d4061157b6b5f04f481.png), url(https://static-dm.akamaized.net/siege/prod/f9b222cd800c493a01561af81c456fa0.png), url(https://static-dm.akamaized.net/siege/prod/c7b872203768028fdd4b6aed54c69ea3.png),url(https://static-dm.akamaized.net/siege/prod/5222e2b34a1864b076632b9b47dddaaa.png), url(https://static-dm.akamaized.net/siege/prod/7907369fa863844fc1ae432a9ca0e610.jpg), url(https://static-dm.akamaized.net/siege/prod/7907369fa863844fc1ae432a9ca0e610.jpg);
     background-color: #FFFFFF; 
     width: 100%;
 }
+
+
 header{
-    --header-bg: #00000199;
+    --header-bg: #00000099;
     --header-height: 80px;
     height: var(--header-height);
     background-color: var(--header-bg);
@@ -20,6 +28,8 @@ header{
     top: 0px;
     left: 0px;
     right: 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: rgb(0 0 0) 0px 0px 10px;
     transition: background-color 0.1s ease-in 0s;
 }
 .container{
@@ -38,7 +48,7 @@ a{
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    margin: 2vh 0;
+    margin: 1vh 0;
 }
 .logotipo h1{
     font-size: 5vh;
@@ -154,7 +164,7 @@ a{
     justify-content: center;
     align-items: center;
     margin-block-start: 1em;
-    margin-block-end: 5em;
+    margin-block-end: 3em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     color: #FFFFFF;
@@ -164,5 +174,54 @@ a{
     margin-left: 35%;
     justify-content: center;
     align-items: center;
-    margin-block-end: 5em;
+    margin-block-end: 3em;
 }
+.relacoes{
+    margin-top: 5rem;
+}
+.valores{
+    display: flex;
+}
+
+.caixa-total{ /* div que cobre tudo */
+    background-color: #000000ff;
+}
+.caixa-cima{ /* div da parte de cima*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 0;
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+.textos{ /* div da parte do fale conosco */
+    display: flex;
+    flex-direction: column;
+    gap: 1vh 0;
+    color: white;
+    margin: 0 5vh;
+}
+.logotipo{ /* div da parde do logo */
+    margin: 0 5vh;
+}
+/* divs da parte de dentro do fale conosco */
+.textos .email{
+    display: flex;
+}
+.textos .telefone{
+    display: flex;
+}
+.textos .email p{
+    padding: 0 1vh;
+}
+.textos .telefone p{
+    padding: 0 1vh;
+}
+/* div da parte de baixo */
+.caixa-baixo{
+    display: flex;
+    color: #C5C3FF;
+    align-items: center;
+    padding: 2vh;
+    margin: 0 5vh;
+}
+    
