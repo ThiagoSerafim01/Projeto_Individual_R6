@@ -48,7 +48,8 @@ a{
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    margin: 1vh 0;
+    margin: 2vh 0;
+    margin-top: 1vh;
 }
 .logotipo h1{
     font-size: 5vh;
@@ -181,8 +182,16 @@ a{
 }
 .valores{
     display: flex;
+    color: #FFFFFF;
+    margin-left: 1rem;
+    margin-block-end: 5em;
+    font-size: 1.2rem;
 }
-
+.comunicacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .caixa-total{ /* div que cobre tudo */
     background-color: #000000ff;
 }
@@ -201,7 +210,8 @@ a{
     margin: 0 5vh;
 }
 .logotipo{ /* div da parde do logo */
-    margin: 0 5vh;
+    margin: 1 5vh;
+    margin-right: 5vh;
 }
 /* divs da parte de dentro do fale conosco */
 .textos .email{
