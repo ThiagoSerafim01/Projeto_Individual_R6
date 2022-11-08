@@ -14,7 +14,7 @@ body {
   background-image: url(../assets/imgs/bg3.jpg);
   background-size: cover;
 }
-/* Arrumando a pág / separando a pagina background e container */
+
 section {
   width: 100%;
 }
@@ -73,7 +73,7 @@ section .contentBox .formBox .subtitle {
 section .contentBox .formBox .border {
   display: flex;
   border-bottom: 1px solid var(--whiteBorder);
-  margin-top: 25px;
+  margin-top: 20px;
   padding: 5px;
 }
 
@@ -83,10 +83,11 @@ section .contentBox .formBox .inputBox input {
   outline: none;
   font-weight: 400;
   border: none;
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 1px;
   background: transparent;
   color: #FFFFFF ;
+  
 }
 /* Ícones */
 section .contentBox .formBox form .visibility {
