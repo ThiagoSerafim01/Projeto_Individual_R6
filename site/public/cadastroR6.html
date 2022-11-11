@@ -11,25 +11,24 @@
     <section>
       <div class="contentBox">
         <div class="btnBack">
-          <img src="assets/arrowBack.svg" alt="" onclick="voltarPagina()" />
+          <img src="./assets/imgs/voltar.svg" alt="" onclick="voltarPagina()" />
         </div>
         <div id="formBox" class="formBox">
           <div class="header">
             <h2>Cadastro</h2>
-            <p class="subtitle">Informe seus dados para o cadastro</p>
           </div>
           <form action="">
             <span id="spanAviso"></span>
             
             <!-- <span>Usuário</span> -->
             <div class="inputBox border">
-              <img src="assets/cadastro/personCadastro.svg" alt="" />
+              <img class="perfil" src="./assets/imgs/iconPerfil.svg" />
               <input id="inputUsuario" type="text" name="" placeholder="Usuário" onblur="validarUsuario()" required/>
               <span id="spanErrorUser">Insira uma senha com caracteres especiais</span>
             </div>
             <!-- <span>Senha</span> -->
             <div class="inputBox border">
-              <img src="assets/cadastro/keyCadastro.svg" alt="" />
+              <img src="./assets/imgs/Vector (1).svg" alt="" />
               <input
                 type="password"
                 name=""
@@ -42,7 +41,7 @@
                 id="btnVisibility"
                 class="visibility"
                 onclick="mostrarSenha()"
-                src="assets/cadastro/visibility.svg"
+                src="./assets/imgs/iconVerSenha.svg"
                 alt=""
               />
               <span id="spanErrorPassword">Insira uma senha com caracteres especiais</span>
@@ -51,14 +50,15 @@
             </div>
             <!-- <span>Nome completo</span> -->
             <div class="inputBox border">
-              <img src="assets/cadastro/badgeCadastro.svg" alt="" />
+              <img src="./assets/imgs/iconNomeComp.svg
+              " alt="" />
               <input id="inputNome" type="text" name="" placeholder="Nome Completo" required onblur="validarNome()"/>
               <span id="spanErrorName">Insira uma senha com caracteres especiais</span>
             </div>
 
             <!-- <span>E-mail</span> -->
             <div class="inputBox border">
-              <img src="assets/cadastro/emailCadastro.svg" alt="" />
+              <img src="./assets/imgs/emailCadastro 1.svg" alt="" />
               <input id="inputEmail" type="email" name="" placeholder="E-mail" required onblur="validarEmail()"/>
               <span id="spanErrorEmail">Insira uma senha com caracteres especiais</span>
               
@@ -66,7 +66,7 @@
 
             <!-- <span>Contato</span> -->
             <div class="inputBox border">
-              <img src="assets/cadastro/callCadastro.svg" alt="" />
+              <img src="./assets/imgs/icontel.svg" alt="" />
               <input id="inputContato" type="text" name="" placeholder="Contato (Opcional)" onkeyup="validarContato()" />
               <span id="spanErrorContate">Insira uma senha com caracteres especiais</span>
             </div>

@@ -18,6 +18,9 @@ body {
 section {
   width: 100%;
 }
+.perfil{
+  color: #FFFFFF;
+}
 
 /* Botão voltar na parte superior da tela */
 section .btnBack {
@@ -88,6 +91,9 @@ section .contentBox .formBox .inputBox input {
   background: transparent;
   color: #FFFFFF ;
   
+}
+input::placeholder{
+  color: #fffffc;
 }
 /* Ícones */
 section .contentBox .formBox form .visibility {
