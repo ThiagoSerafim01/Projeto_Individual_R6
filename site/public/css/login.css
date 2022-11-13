@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap");
 :root {
   --bgBlue: #080101;
-  --whiteBorder: #FFFFFF;
+  --yellowBorder: #FFFFFF;
 }
 * {
   margin: 0;
@@ -11,15 +11,14 @@
 
 body {
   font-family: "Manrope", sans-serif;
-  background-image: url(../assets/imgs/bg3.jpg);
+  background-image: url(../assets/imgs/loginFundo.jpg);
   background-size: cover;
 }
-
+/* Arrumando a pág / separando a pagina background e container */
 section {
+  background-size: cover;
   width: 100%;
-}
-.perfil{
-  color: #FFFFFF;
+  height: 100vh;
 }
 
 /* Botão voltar na parte superior da tela */
@@ -41,7 +40,8 @@ section .contentBox {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: 100%;
+  height: 100%;
 }
 
 section .contentBox .formBox {
@@ -56,16 +56,16 @@ section .contentBox .formBox {
 section .contentBox .formBox h2 {
   color: #fffdff;
   font-weight: 600;
-  font-size: 2em;
+  font-size: 3em;
   text-transform: uppercase;
-  border-bottom: 2px solid var(--whiteBorder);
+  border-bottom: 4px solid var(--yellowBorder);
   display: inline-block;
   letter-spacing: 1px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 section .contentBox .formBox .subtitle {
   font-family: "Manrope";
-  color: #ffffffbc;
+  color: #99968c;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -75,7 +75,7 @@ section .contentBox .formBox .subtitle {
 /* Estilização dos inputs */
 section .contentBox .formBox .border {
   display: flex;
-  border-bottom: 1px solid var(--whiteBorder);
+  border-bottom: 1px solid var(--yellowBorder);
   margin-top: 35px;
   padding: 5px;
 }
@@ -89,8 +89,7 @@ section .contentBox .formBox .inputBox input {
   font-size: 16px;
   letter-spacing: 1px;
   background: transparent;
-  color: #FFFFFF ;
-  
+  color: #FFFFFF;
 }
 input::placeholder{
   color: #fffffc;
@@ -99,7 +98,6 @@ input::placeholder{
 section .contentBox .formBox form .visibility {
   position: absolute;
   right: 1rem;
-  margin-top: 0.5rem;
   opacity: 0.7;
   transition: 0.2s;
   cursor: pointer;
@@ -112,44 +110,45 @@ section .contentBox .formBox .inputBox img {
 }
 /* Botão para Enviar Formulário  */
 section .contentBox .formBox .inputBox input[type="button"] {
-  background: #ffffffbc;
-  color: #000;
+  background: var(--bgBlue);
+  color: #fff;
   outline: none;
   border-radius: 25px;
   cursor: pointer;
   transition: 0.25s;
   font-weight: 600;
+  margin: 50px;
   border: none;
   width: 140px;
-  margin: 25px;
 }
 
 section .contentBox .formBox .inputBox input[type="button"]:hover {
-  background: var(--bgBlue);
-  color: #fff;
+  background: var(--yellowBorder);
+  color: #000;
+}
+/*Lembrar senha*/
+section .contentBox .formBox .remember{
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  transition: .2s;
+  padding: 20px;
+}
+section .contentBox .formBox .remember span{
+  font-size: 18px;
+  letter-spacing: 3px;
 }
 
 /* Já tem cadastro, texto para ir até a tela de login */
-section .contentBox .formBox .inputBox .cadastrado {
-  color:#ffffffbc;
-  margin-top: 45px;
+section .contentBox .formBox .inputBox .cadastrar {
+  color: rgb(197, 197, 197);
+  margin-top: 55px;
 }
 
 section .contentBox .formBox span a {
-  color: var(--whiteBorder);
-  text-decoration: none;
-}
-section .contentBox .formBox .spanAviso{
-  width: 200px;
-  position: absolute;
-  right: 24rem;
-  top: 9rem;
-  box-shadow: 5px 6px 2px 1px rgb(0 0 0 / 10%);
-  background-color: rgba(68, 68, 68, 0.5);
-  color: #ffffff;
-  border-radius: 25px;
-  padding: 15px;
-
+  color: var(--yellowBorder);
+  
 }
 /* Estilização do Span de error chamado no JavaScript */
 
@@ -164,13 +163,13 @@ section .contentBox .formBox .inputBox
   right: -10rem;
   margin-top: -18px;
   padding: 20px;
-  box-shadow:  5px 6px 2px 1px rgba(0, 0, 0, 0.1);
-  background-color: rgba(68, 68, 68, 0.5);
-  border-radius: 25px;
+  box-shadow:  5px 6px 2px 1px rgba(0, 0, 0, 0.5);
+  background-color: rgba(68, 68, 68, 0.5);;
+  border-radius: 20px;
 }
 
 section .contentBox .formBox .inputBox .active {
   /* display: block; */
   visibility: visible !important; /* Necessário para aparecer na tela e sobrepor o  a estilização do ID */
-  color: #FFFFFF;
+  color:  #FFFFFF ;
 }
