@@ -164,7 +164,7 @@ section .contentBox .formBox .inputBox
   margin-top: -18px;
   padding: 20px;
   box-shadow:  5px 6px 2px 1px rgba(0, 0, 0, 0.5);
-  background-color: rgba(68, 68, 68, 0.5);;
+  background-color: rgba(68, 68, 68, 0.5);
   border-radius: 20px;
 }
 
