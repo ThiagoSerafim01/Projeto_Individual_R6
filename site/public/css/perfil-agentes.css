@@ -20,7 +20,6 @@ body {
     background-color:  #2499ff;
     width: 15%;
     height: 100vh;
-
 }
 
 /*Icone de usuário e Nome completo*/
@@ -103,6 +102,54 @@ body {
 
 .container_all{
     background-image: url(https://static-dm.akamaized.net/siege/prod/6b7885a09c1f3d4061157b6b5f04f481.png), url(https://static-dm.akamaized.net/siege/prod/f9b222cd800c493a01561af81c456fa0.png), url(https://static-dm.akamaized.net/siege/prod/c7b872203768028fdd4b6aed54c69ea3.png),url(https://static-dm.akamaized.net/siege/prod/5222e2b34a1864b076632b9b47dddaaa.png), url(https://static-dm.akamaized.net/siege/prod/7907369fa863844fc1ae432a9ca0e610.jpg), url(https://static-dm.akamaized.net/siege/prod/7907369fa863844fc1ae432a9ca0e610.jpg);
-    background-color: #FFFFFF; 
-    width: 85%;
+    width: 100%;
+}
+
+ h1{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    color: white;
+    margin-left: 50%;
+    margin-right: 6%;
+    margin-top: 7vh;
+}
+
+.button-atacante{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50%;
+    margin-right: 6%;
+    margin-top: 15vh;
+}
+
+.button-atacanteefeito{
+    padding: 13px 25px 11px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
+    color: #24262a;
+    background: #2499ff;
+    border-bottom: 5px solid #2499ff;
+}
+
+.text{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    
+}
+.atacante-icon{
+    content: "";
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
