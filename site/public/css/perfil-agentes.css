@@ -17,6 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     position: fixed;
+    top: 0;
     background-color:  #2499ff;
     width: 15%;
     height: 100vh;
@@ -110,8 +111,7 @@ body {
     position: absolute;
     justify-content: center;
     color: white;
-    margin-left: 50%;
-    margin-right: 6%;
+    margin-left: 44.5%;
     margin-top: 7vh;
 }
 
@@ -120,36 +120,95 @@ body {
     position: absolute;
     justify-content: center;
     align-items: center;
-    margin-left: 50%;
-    margin-right: 6%;
     margin-top: 15vh;
+    width: 100%;
+
 }
 
 .button-atacanteefeito{
-    padding: 13px 25px 11px;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    padding: 10px 20px 10px;
     text-transform: uppercase;
-    color: #24262a;
     background: #2499ff;
-    border-bottom: 5px solid #2499ff;
+    border-bottom: 1px 1px 1px 1px  #2499ff;
 }
-
+.button-atacanteefeito:hover {
+    transform: translateY(5px);
+    box-shadow: 0px 6px 2px 1px rgba(0, 255, 230, .5), inset 0px 0px 25px 5px rgba(0,255,230,0);
+    border: 1px solid rgba(0, 255, 230, .5);
+    transition: 0.4s;
+}
 .text{
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    
+    font-size: 16px;
 }
-.atacante-icon{
+.text::before{
     content: "";
     margin: 0;
     width: 40px;
     height: 40px;
+    background-image: url(../assets/imgs/atacante.svg);
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: 100%;
+}
+
+.card-operadores{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-left: 20%;
+    margin-top: 0vh;
+    width: calc(62.66667% - 10px);
+}
+
+
+.oplist_card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: #24262a;
+    background-color: hsla(0,0%,100%,.15);
+    overflow: hidden;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    margin: 5px;
+}
+
+.oplist_card .oplist_card_img {
+    width: 100%;
+    height: auto;
+}
+
+.oplist_card .oplist_card_icon {
+    display: block;
+    position: absolute;
+    top: 55%;
+    right: auto;
+    left: 50%;
+    bottom: auto;
+    margin: 0 -25%;
+    width: 50%;
+    height: auto;
+}
+
+.oplist_card span {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 7px 0 10px;
+    width: 100%;
+    font-size: 26px;
+    line-height: 20px;
+    color: #24262a;
+    background-color: #c3c3c3;
 }
