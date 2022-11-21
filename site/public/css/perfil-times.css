@@ -1,0 +1,165 @@
+body{
+    background-image: url(../assets/imgs/fundotimepreto.jpg);
+    color: #181a1f;
+    font-family: bold,sans-serif;
+    font-size: 18px;
+    margin: 0;
+    min-height: 100vh;
+    min-width: 320px;
+    padding: 0;
+    position: relative;
+}
+
+.title{
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 50vh;
+    margin-top: 15px;
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+}
+
+.title  span {
+    display: block;
+    position: relative;
+    font-size: 1.8em;
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+    color: transparent;
+}
+
+h1, h2 {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+}
+
+section{
+    display: block;
+}
+
+.clasificacao{
+    overflow-y: auto;
+}
+
+.clasificacao tbody tr td:last-child {
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+}
+.tabela {
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    width: 80%;
+    margin-left: 35vh;   
+}
+
+.tabela tbody tr td {
+    font-family: lightItalic;
+    background: black;
+}
+
+.tabela tr td.position {
+    font-family: boldItalic;
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+    padding: 0px 0.3em;
+}
+
+.tabela tbody tr td:first-child {
+    background: white;
+    color: black;
+}
+
+.tabela .left {
+    text-align: left;
+}
+
+.tabela tbody tr td.points {
+    font-family: boldItalic;
+    font-size: 1.1em;
+}
+
+.tabela thead tr th {
+    font-family: light;
+    font-size: 0.8em;
+}
+
+.iUxQqJ {
+    color: red;
+}
+
+.tabela tbody tr td .team a {
+    color: white;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+a {
+    -webkit-transition: color .18s ease-in-out;
+    transition: color .18s ease-in-out;
+    will-change: color;
+    -webkit-text-decoration-skip: objects;
+    background-color: transparent;
+    color: #fcae18;
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover{
+    -webkit-transition: color .18s ease-in-out;
+    transition: color .18s ease-in-out;
+    will-change: color;
+    -webkit-text-decoration-skip: objects;
+    background-color: transparent;
+    color: #fcae18;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+img {
+    border: 0;
+    border-style: none;
+}
+
+.tabela tbody tr td.points {
+    font-family: boldItalic;
+    font-size: 1.1em;
+}
+
+.tabela tbody tr td .team a img {
+    margin-right: 0.3em;
+}
+
+.tabela img {
+    width: 1.5rem;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+    margin-block-end: 8vh;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
