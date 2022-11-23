@@ -196,18 +196,18 @@
               resposta.json().then((json) => {
                 console.log(json);
                 //nome da empresa
-                var nome_empresa = json.nomeEmpresa;
-                titulo_div_empresa.innerHTML = nome_empresa;
+                var nome_Org = json.nomeOrg;
+                titulo_div_empresa.innerHTML = nome_Org;
                 subtitulo_div_empresa.remove();
                 inputOrg.remove();
-                nome_org_cadastro.innerHTML = `Nome da Empresa`;
-                nome_org_box.innerHTML += nome_empresa;
+                nome_org_cadastro.innerHTML = `Nome da Organização`;
+                nome_org_box.innerHTML += nome_Org;
 
                 //cnpj da empresa
-                var cnpj_empresa = Number(json.cnpj);
+                var regiao_org = json.regiao;
                 inputRegiao.remove();
-                regiao_org_box.innerHTML += cnpj_empresa;
-                regiao_org_cadastro.innerHTML = "CNPJ";
+                regiao_org_box.innerHTML += regiao_org;
+                regiao_org_cadastro.innerHTML = "Região";
 
                 //Logradouro da empresa
                 var logradouro_empresa = json.logradouro;
@@ -277,10 +277,6 @@
                       <div class="estilo-atributos">
                         <h5>Login:</h5>
                         <p>${publicacao.username}</p>
-                      </div>
-                      <div class="estilo-atributos">
-                        <h5>Senha:</h5>
-                        <p>${publicacao.senha}</p>
                       </div>
                       <div class="estilo-atributos">
                         <h5>Nome Completo:</h5>

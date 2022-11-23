@@ -100,7 +100,7 @@ function validarContato() {
 
 function validar_autenticacao_login() {
   if (validar_usuario && validar_senha) {
-    window.location.href = "perfil-dashboard-empresa.html";
+    window.location.href = "perfil-agentes.html";
   } else {
     alert("Autenticação inválida");
   }
@@ -125,7 +125,7 @@ function validar_autenticacao_cadastro() {
 
 function cadastrar() {
   // aguardar();
-  window.location.href = "login.html";
+  window.location.href = "loginR6.html";
   //Recupere o valor da nova input pelo nome do id
   // Agora vá para o método fetch logo abaixo
   var userVar = inputUsuario.value;
@@ -168,7 +168,7 @@ function cadastrar() {
           alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
           setTimeout(() => {
-              window.location = "login.html";
+              window.location = "loginR6.html";
           }, "2000")
           
           limparFormulario();
