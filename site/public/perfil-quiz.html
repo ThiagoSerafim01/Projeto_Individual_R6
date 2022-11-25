@@ -93,7 +93,7 @@
         <div class="sidebar">
             <img class="icone-perfil" src="./assets/imgs/logo2.svg" alt="" width="42px">
 
-            <h3><span id="b_usuario"></span>Thiago Serafim</h3>
+            <h3><span id="b_usuario"></span></h3>
             <nav>
                 <ul class="sidebar-lista">
                     <li>
@@ -138,3 +138,9 @@
 
 </body>
 </html>
+
+<script>
+
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+</script>

@@ -7,6 +7,23 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
+function buscar(req, res) {
+    const idPerfil = req.query.id;
+
+    usuarioModel.buscar(idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado[0]);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function listar(req, res) {
     usuarioModel.listar()
         .then(function (resultado) {
@@ -25,16 +42,16 @@ function listar(req, res) {
 }
 
 function entrar(req, res) {
-    var email = req.body.emailServer;
+    var user = req.body.userServer;
     var senha = req.body.senhaServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+    if (user == undefined) {
+        res.status(400).send("Seu user está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
         
-        usuarioModel.entrar(email, senha)
+        usuarioModel.entrar(user, senha)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -44,7 +61,7 @@ function entrar(req, res) {
                         console.log(resultado);
                         res.json(resultado[0]);
                     } else if (resultado.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
+                        res.status(403).send("user e/ou senha inválido(s)");
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
@@ -60,23 +77,102 @@ function entrar(req, res) {
 
 }
 
+
+// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
+function confirmar_user(req, res) {
+    var user = req.body.username;
+    var idPerfil = req.body.idPerfil;
+    if (user == undefined) {
+        res.status(400).send("Seu user está undefined!");
+    } else {
+        usuarioModel.confirmar_user(user, idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+}
+
+// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
+function confirmar_senha(req, res) {
+    var senha = req.body.senha;
+    var idPerfil = req.body.idPerfil;
+    if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+        usuarioModel.confirmar_senha(senha, idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+}
+
+
+// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
+function confirmar_telefone(req, res) {
+    var telefone = req.body.telefone;
+    var idPerfil = req.body.idPerfil;
+    if (telefone == undefined) {
+        res.status(400).send("Seu telefone está undefined!");
+    } else {
+        usuarioModel.confirmar_telefone(telefone, idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+}
+
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var user = req.body.userServer;
+    var senha = req.body.senhaServer;
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var contato = req.body.contatoServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+    } else if (user == undefined) {
+        res.status(400).send("Seu user está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(user, senha, nome, email, contato)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -98,5 +194,9 @@ module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    buscar,
+    confirmar_user,
+    confirmar_senha,
+    confirmar_telefone
 }

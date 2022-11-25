@@ -1,22 +1,22 @@
 CREATE DATABASE rainbowsix;
 USE rainbowsix;
-
+	
 CREATE TABLE
-    organizacao (
+    Organizacao (
         idOrganizacao INT PRIMARY KEY AUTO_INCREMENT,
         nomeOrganizacao  VARCHAR(45) NOT NULL,
-        cidade VARCHAR(45) NOT NULL,
-        bairro VARCHAR(45),
+		regiao VARCHAR(20) NOT NULL,
         logradouro VARCHAR(80) NOT NULL,
         cep CHAR(8) NOT NULL,
-        complemento VARCHAR(45),
-        regiao VARCHAR(20) NOT NULL
+        bairro VARCHAR(45),
+        complemento VARCHAR(45)
     );
 
 CREATE TABLE
-    perfil (
+    Perfil (
         idPerfil INT PRIMARY KEY AUTO_INCREMENT,
         username VARCHAR(45) NOT NULL,
+        senha varchar(45)  NULL,
         nome VARCHAR(60) NOT NULL,
         email VARCHAR(50) NOT NULL,
         telefone VARCHAR(11),
@@ -24,6 +24,8 @@ CREATE TABLE
         fkOrg INT,
         FOREIGN KEY (fkOrg) REFERENCES organizacao (idOrganizacao)
     );
+    
+    select * from perfil;
     
     CREATE TABLE 
         tentativa(

@@ -19,7 +19,7 @@
         <div class="sidebar">
             <img class="icone-perfil" src="./assets/imgs/logo2.svg" alt="" width="42px">
 
-            <h3><span id="b_usuario"></span>Thiago Serafim</h3>
+            <h3><span id="b_usuario"></span></h3>
             <nav>
                 <ul class="sidebar-lista">
                     <li>
@@ -183,9 +183,9 @@
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    function buscarDadosEmpresa() {
-      if (sessionStorage.ID_EMPRESA) {
-        fetch(`/empresa?id=${sessionStorage.ID_EMPRESA}`, {
+    function buscarDadosOrganizacao() {
+      if (sessionStorage.ID_ORGANIZACAO) {
+        fetch(`/organizacao?id=${sessionStorage.ID_ORGANIZACAO}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -195,7 +195,7 @@
             if (resposta.ok) {
               resposta.json().then((json) => {
                 console.log(json);
-                //nome da empresa
+                //nome da org
                 var nome_Org = json.nomeOrg;
                 titulo_div_empresa.innerHTML = nome_Org;
                 subtitulo_div_empresa.remove();
@@ -203,30 +203,30 @@
                 nome_org_cadastro.innerHTML = `Nome da Organização`;
                 nome_org_box.innerHTML += nome_Org;
 
-                //cnpj da empresa
+                //regiao da org
                 var regiao_org = json.regiao;
                 inputRegiao.remove();
                 regiao_org_box.innerHTML += regiao_org;
                 regiao_org_cadastro.innerHTML = "Região";
 
-                //Logradouro da empresa
+                //Logradouro da org
                 var logradouro_empresa = json.logradouro;
                 inputLogradouro.remove();
                 logradouro_org_box.innerHTML += logradouro_empresa;
                 logradouro_org_cadastro.innerHTML = "Logradouro";
 
-                //Cep da empresa
+                //Cep da org
                 var cep_empresa = Number(json.cep);
                 inputCEP.remove();
                 cep_empresa_box.innerHTML += cep_empresa;
                 cep_empresa_cadastro.innerHTML = "CEP";
 
-                //Bairro da empresa
+                //Bairro da org
                 var bairro_empresa = json.bairro;
                 inputBairro.remove();
                 bairro_empresa_box.innerHTML += bairro_empresa;
 
-                //Complemento da empresa
+                //Complemento da org
                 var complemento_empresa = json.complemento;
                 inputComplemento.remove();
                 complemento_org_box.innerHTML += complemento_empresa;
@@ -247,7 +247,7 @@
     }
 
     function buscarDadoFuncionario() {
-      var idEmpresa = sessionStorage.ID_EMPRESA;
+      var idOrganizacao = sessionStorage.ID_ORGANIZACAO;
     fetch(`/funcionario/listarFuncionario/${idEmpresa}`)
       .then(function (resposta) {
         console.log('estou na Buscarfuncionario()',resposta);
@@ -319,14 +319,14 @@
       var complementoVar = inputComplemento.value;
 
       // Enviando o valor da nova input
-      fetch("/empresa/cadastrarEmpresa", {
+      fetch("/organizacao/cadastrarOrganizacao", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
+          // Agora vá para o arquivo routes/organizacao.js
           idPerfil: sessionStorage.ID_PERFIL,
           empresaNomeServer: orgNomeVar,
           cnpjServer: regiaojVar,
@@ -340,7 +340,7 @@
   // Se sucesso, ele atualiza o id da empresa dentro da sessionStorage e atualiza a pág
           if (resposta.ok) {
             resposta.json().then((idEmpresa) => {
-              sessionStorage.ID_EMPRESA = idEmpresa;
+              sessionStorage.ID_ORGANIZACAO = idOrganizacao;
             });
 
             alert("Cadastro realizado com sucesso!");
@@ -369,9 +369,9 @@
       var emailVar = inputEmail.value;
       var contatoVar = inputContato.value;
       var funcaoVar = inputFuncao.value;
-      var idEmpresa = sessionStorage.ID_EMPRESA;
+      var idOrganizacao = sessionStorage.ID_ORGANIZACAO;
 
-      fetch(`/funcionario/cadastrarFuncionario/${idEmpresa}`,{
+      fetch(`/funcionario/cadastrarFuncionario/${idOrganizacao}`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -379,7 +379,7 @@
         body: JSON.stringify({
           // crie um atributo que recebe o valor recuperado aqui
           // Agora vá para o arquivo routes/funcionario.js
-          idEmpresa: sessionStorage.ID_EMPRESA,
+          idOrganizacao: sessionStorage.ID_ORGANIZACAO,
           userServer: userVar,
           nomeServer: nomeVar,
           emailServer: emailVar,
@@ -388,7 +388,7 @@
         }),
       })
         .then(function (resposta) {
-          console.log("resposta: ", resposta, sessionStorage.ID_EMPRESA);
+          console.log("resposta: ", resposta, sessionStorage.ID_ORGANIZACAO);
 
           if (resposta.ok) {
             alert("Cadastro realizado com sucesso!");
@@ -398,7 +398,7 @@
             }, "500");
           } else {
             alert("Houve um erro ao tentar realizar o cadastro!");
-            console.log("respostaaaa: ", resposta, sessionStorage.ID_EMPRESA);
+            console.log("respostaaaa: ", resposta, sessionStorage.ID_ORGANIZACAO);
           }
         })
         .catch(function (resposta) {

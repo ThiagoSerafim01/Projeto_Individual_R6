@@ -123,9 +123,9 @@ function validar_autenticacao_cadastro() {
 }
 
 
-function cadastrar() {
+function cadastrarOrg() {
   // aguardar();
-  window.location.href = "loginR6.html";
+  window.location.href = "login.html";
   //Recupere o valor da nova input pelo nome do id
   // Agora vá para o método fetch logo abaixo
   var userVar = inputUsuario.value;
@@ -133,6 +133,7 @@ function cadastrar() {
   var nomeVar = inputNome.value;
   var emailVar = inputEmail.value;
   var contatoVar = inputContato.value;
+
 
   // if (userVar == "" || senhaVar == "" || nomeVar == "" || emailVar == "") {
   //     cardErro.style.display = "block"
@@ -168,7 +169,7 @@ function cadastrar() {
           alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
           setTimeout(() => {
-              window.location = "loginR6.html";
+              window.location = "login.html";
           }, "2000")
           
           limparFormulario();
