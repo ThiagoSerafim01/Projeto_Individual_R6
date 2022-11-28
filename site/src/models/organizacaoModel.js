@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function buscar(idOrganizacao) {
-  const instrucao = `SELECT * FROM Empresa WHERE idEmpresa = ${idOrganizacao}`;
+  const instrucao = `SELECT * FROM Organizacao WHERE idOrganizacao  = ${idOrganizacao}`;
   return database.executar(instrucao);
 }
 
@@ -15,13 +15,13 @@ async function cadastrarOrganizacao(
   regiao
 ) {
   console.log(
-    "ACESSEI O Empresa MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+    "ACESSEI O Organizao MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
   );
 
   // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
   //  e na ordem de inserção dos dados.
   var instrucao = `
-        INSERT INTO Empresa (nomeEmpresa, regiao, logradouro , cep, bairro, complemento) VALUES 
+        INSERT INTO Organizacao (nomeOrganizacao, regiao, logradouro , cep, bairro, complemento) VALUES 
         ('${empresaNome}', '${regiao}', '${logradouro}','${cep}','${bairro}','${complemento}');
 
     `;
@@ -31,7 +31,7 @@ async function cadastrarOrganizacao(
 
   instrucao = `
     UPDATE Perfil
-    SET Perfil.fkEmpresa = ${linhaInserida.insertId}
+    SET Perfil.fkOrg = ${linhaInserida.insertId}
     WHERE idPerfil = ${parseInt(idPerfil)};
   `
   console.log("Executando a instrução SQL: \n" + instrucao); 

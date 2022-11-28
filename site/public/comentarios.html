@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link data-react-helmet="true" rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64"
+        href="./assets/imgs/favicon.ico">
+    <link rel="stylesheet" href="./css/comentario.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <title>Comentario</title>
+</head>
+
+<body>
+
+    <main>
+
+        <h1 class="comentarioTitulo">
+            Comentário
+        </h1>
+        <p class="comentarioParagrafo">
+            Faça um comentário sobre o que você achou do site e pontos de melhoras.
+        </p>
+        <div class="grid-geral">
+            <textarea onkeyup="adicionarCor()" class="comentario" name="" id="textArea" cols="30" rows="10"></textarea>
+            <button class="addComentario" onclick="comentar()" id="botaoComentario">Adicionar Comentário</button>
+            <div id="divComentarios">
+
+            </div>
+
+            <!-- SideBar do Perfil-->
+            <div class="sidebar">
+                <img class="icone-perfil" src="./assets/imgs/logo2.svg" alt="" width="42px">
+
+                <h3><span id="b_usuario"></span></h3>
+                <nav>
+                    <ul class="sidebar-lista">
+                        <li>
+                            <a href="perfil-agentes.html">
+                                <img class="sidebar-icone-lista" width="54" height="54" viewBox="0 0 50 50"
+                                    src="./assets/imgs/agentes.svg">
+                                <span href="perfil-agentes.html" class="sidebar-titulo">AGENTES</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="perfil-times.html">
+                                <img class="sidebar-icone-lista" width="54" height="54" viewBox="0 0 50 50"
+                                    src="./assets/imgs/invitational.png">
+                                <span class="sidebar-titulo">TIMES</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="perfil-cadastroTime.html">
+                                <img class="sidebar-icone-lista" width="54" height="54" viewBox="0 0 50 50"
+                                    src="./assets/imgs/challenger.png">
+                                <span class="sidebar-titulo">CHALLENGER</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="perfil-quiz.html">
+                                <img class="sidebar-icone-lista" width="54" height="54" viewBox="0 0 50 50"
+                                    src="./assets/imgs/quiz.png">
+                                <span class="sidebar-titulo">QUIZ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="comentarios.html">
+                                <img class="sidebar-icone-lista" width="54" height="54" viewBox="0 0 50 50"
+                                    src="./assets/imgs/iconAvali.png">
+                                <span class="sidebar-titulo">Avaliação</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                                <span class="sidebar-titulo"><img src="./assets/imgs/r6s-y6-logo.webp"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+    </main>
+</body>
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+     function adicionarCor(){
+    console.log("adjwidj")
+    if(textArea.value == ""){
+      botaoComentario.classList.remove("addComentarioAtivo")
+    } else {
+      botaoComentario.classList.add("addComentarioAtivo")
+    }
+  }
+
+
+    function comentar(){
+        console.log(sessionStorage.getItem("FK_COMENTARIO"))
+        if(sessionStorage.getItem("FK_COMENTARIO") == 'null'){
+         sessionStorage.FK_COMENTARIO = 1;
+        fetch(`/usuarios/addComentario`, {
+          method: "POST",
+          headers: {
+            "Content-Type" : "application/json"
+          },
+          body: JSON.stringify({
+            comentario: textArea.value
+            
+          })
+        }).then(function (resposta){
+            if(resposta.ok){
+              console.log("Comentário feito com sucesso!")
+              alert("Comentário feito com sucesso!")
+              atualizarDados()
+            } else {
+              console.log("Erro no then!")
+            }
+          }).catch(function (resposta){
+            console.log(`#ERRO: ${resposta}`);
+          })
+      } else {
+        alert("Você já realizou um comentário")
+      }
+      return false;
+    }
+
+  
+
+  function atualizarDados(){
+    const idPerfil= sessionStorage.getItem("ID_PERFIL");
+
+    fetch(`/usuarios/atualizarDados`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idPerfil: idPerfil
+      })
+    }).then(function(resposta){
+        if(resposta.ok){
+          console.log("Dados atualizados")
+          mostrarComentarios()
+        }else{
+          console.log("Erro ao atualizar dados")
+        }
+    }).catch(function (resposta){
+        console.log(`#ERRO: ${resposta}`);
+    })
+  }
+
+  function mostrarComentarios(){
+    fetch(`/usuarios/mostrarComentarios`).then(
+      function (resposta){
+        if(resposta.ok){
+          resposta.json().then(function (response){
+            var respostaJSON = JSON.parse(JSON.stringify(response))
+            textArea.value = ""
+            divComentarios.innerHTML = ""
+            for(var i = 0; i < respostaJSON.length; i++){
+              divComentarios.innerHTML += 
+              `
+              <div class="comentarioFeito">
+                <b>${respostaJSON[i].nome}:</b> ${respostaJSON[i].comentario}
+              </div>
+        `
+            }
+          })
+        }else {
+          console.log("ERRO")
+        }
+      }
+    )
+  }
+  mostrarComentarios()
+
+</script>

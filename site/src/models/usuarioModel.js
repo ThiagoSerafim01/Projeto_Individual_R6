@@ -67,6 +67,28 @@ function cadastrar(user, senha, nome, email, contato) {
     return database.executar(instrucao);
 }
 
+function addComentario(textoComentario){
+    var instrucao = `INSERT INTO Comentarios (comentario) values
+    ('${textoComentario}');
+   ` 
+
+
+    return database.executar(instrucao)
+}
+
+function atualizarDados(idPerfil){
+    var instrucao = `
+    UPDATE Perfil SET fkComentario = ${idPerfil} WHERE idPerfil = ${idPerfil};
+   ` 
+   return database.executar(instrucao)
+}
+
+function mostrarComentarios(){
+    var instrucao = `SELECT * FROM Comentarios JOIN Perfil WHERE Comentarios.idComentario = Perfil.fkComentario;`
+
+    return database.executar(instrucao)
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -74,5 +96,8 @@ module.exports = {
     buscar,
     confirmar_user,
     confirmar_senha,
-    confirmar_telefone
+    confirmar_telefone,
+    addComentario,
+    mostrarComentarios,
+    atualizarDados,
 };

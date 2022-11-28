@@ -38,4 +38,16 @@ router.put("/confirmar_telefone/:user", function (req, res) {
     usuarioController.confirmar_telefone(req, res);
 });
 
+router.post("/addComentario", function(req, res){
+    usuarioController.addComentario(req, res);
+})
+
+router.get("/mostrarComentarios", function(req, res){
+    usuarioController.mostrarComentarios(req, res);
+})
+
+router.put("/atualizarDados", function(req, res){
+    usuarioController.atualizarDados(req, res);
+})
+
 module.exports = router;

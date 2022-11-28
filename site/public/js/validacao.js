@@ -123,7 +123,7 @@ function validar_autenticacao_cadastro() {
 }
 
 
-function cadastrarOrg() {
+function cadastrar() {
   // aguardar();
   window.location.href = "login.html";
   //Recupere o valor da nova input pelo nome do id

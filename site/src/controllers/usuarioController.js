@@ -190,6 +190,67 @@ function cadastrar(req, res) {
     }
 }
 
+function addComentario(req, res){
+    var textoComentario = req.body.comentario
+
+
+    usuarioModel.addComentario(textoComentario)
+
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+
+}
+
+function atualizarDados(req, res){
+    var idPerfil = req.body.idPerfil
+
+
+    usuarioModel.atualizarDados(idPerfil)
+
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+
+}
+
+
+function mostrarComentarios(req, res){
+usuarioModel.mostrarComentarios()
+    .then(
+        function (resultado) {
+            console.log(res.json(resultado));
+            console.log(resultado)
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+
 module.exports = {
     entrar,
     cadastrar,
@@ -198,5 +259,8 @@ module.exports = {
     buscar,
     confirmar_user,
     confirmar_senha,
-    confirmar_telefone
+    confirmar_telefone,
+    addComentario,
+    mostrarComentarios,
+    atualizarDados,
 }

@@ -1,9 +1,9 @@
-var empresaModel = require("../models/organizacaoModel");
+var organizacaoModel = require("../models/organizacaoModel");
 
 function buscar(req, res) {
     const idOrganizacao = req.query.id;
 
-    empresaModel.buscar(idOrganizacao)
+    organizacaoModel.buscar(idOrganizacao)
         .then(
             function (resultado) {
                 res.json(resultado[0]);
@@ -36,15 +36,15 @@ function cadastrarOrganizacao(req, res) {
         res.status(400).send("A região está undefined!");
     } else if (logradouro == undefined) {
         res.status(400).send("O logradouro está undefined!");
-    } else if (estado == undefined) {
-        res.status(400).send("O estado está undefined!");
     } else if (cep == undefined) {
-        res.status(400).send("O CEP está undefined!");
+        res.status(400).send("O cep está undefined!");
+    } else if (bairro == undefined) {
+        res.status(400).send("O bairro está undefined!");
     }
     else {
         
-        // Passe os valores como parâmetro e vá para o arquivo empresaModel.js
-        empresaModel.cadastrarOrganizacao(idPerfil, empresaNome,  bairro, logradouro,
+        // Passe os valores como parâmetro e vá para o arquivo organizacaoModel.js
+        organizacaoModel.cadastrarOrganizacao(idPerfil, empresaNome,  bairro, logradouro,
             cep, complemento, regiao)
             .then(
                 function (resultado) {

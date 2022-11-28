@@ -22,19 +22,23 @@ CREATE TABLE
         telefone VARCHAR(11),
         funcao VARCHAR(45), CONSTRAINT chkFuncao CHECK (funcao in('Capitão','Suporte', 'Intermediario', 'Loker')),
         fkOrg INT,
-        FOREIGN KEY (fkOrg) REFERENCES organizacao (idOrganizacao)
+        FOREIGN KEY (fkOrg) REFERENCES organizacao (idOrganizacao),
+        fkComentario INT,
+        FOREIGN KEY (fkComentario) REFERENCES comentarios (idComentario)
     );
     
-    select * from perfil;
     
     CREATE TABLE 
-        tentativa(
-        idTentativa INT PRIMARY KEY AUTO_INCREMENT,
-		acertos INT,
-        total INT, 
-        fkPerfil INT,
-        FOREIGN KEY (fkPerfil) REFERENCES perfil (idPerfil)
+	Comentarios(
+        idComentario INT PRIMARY KEY AUTO_INCREMENT,
+		comentario text
         );
-        
+ 
+	CREATE TABLE 
+	TentativasQuiz(
+        idTentitiva INT,
+        fkPerfil INT,
+        FOREIGN KEY (fkUsuario) REFERENCES Perfil (idPerfil),
+        pontuacao INT);
 	
         

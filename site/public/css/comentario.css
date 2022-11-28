@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    background-image: url(../assets/imgs/fundoComentario.jpg);
+}
+
+.comentarioTitulo{
+    font-family: 'Noto Serif Telugu';
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 5rem;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    line-height: 140px;
+    margin-top: 50px;
+    margin-left: 15%;
+  }
+  
+  .comentarioParagrafo{
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: -20px;
+    margin-left: 15%;
+    color: #fff;
+  }
+  
+  .comentario{
+    width: 80%;
+    margin-top: 90px;
+    padding: 10px;
+    margin-left: 18%;
+    border-radius: 8px;
+    background-image: url(../assets/imgs/loginFundo.jpg);
+    background-position: left;
+    color: #fff;
+    
+  }
+  
+  .comentarioFeito{
+    background-color: #CBCBCB;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    margin-left: 15%;
+  }
+  
+  .addComentario{
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: white;
+    color: grey;
+    margin-top: 10px;
+    text-transform: uppercase;
+    width: 80%;
+    padding: 10px 0;
+    font-size: 1.5rem;
+    border: 1px solid grey;
+    margin-left: 18%;
+    border-radius: 8px;
+  }
+  
+  .addComentarioPreto{
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1.5rem;
+    border: 1px solid rgb(0, 0, 0);
+    cursor: pointer;
+  }
+  
+  .addComentarioAtivo{
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+
+  

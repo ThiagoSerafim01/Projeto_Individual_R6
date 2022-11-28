@@ -28,14 +28,14 @@ exit_btn.onclick = () => {
 
 // se o botão continueQuiz for clicado
 continue_btn.onclick = () => {
-  
+
   info_box.classList.remove("activeInfo"); //ocultar as informações
   start_btn_home.classList.add("hidden");
 
   loader.classList.remove("hidden");
   const myTimeout = setTimeout(startQuiz, 3000);
 
-  function startQuiz() {    
+  function startQuiz() {
     loader.classList.add("hidden");
     start_btn_home.classList.remove("hidden");
     quiz_box.classList.add("activeQuiz"); //mostrar caixa de teste
@@ -60,7 +60,7 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
 // se o botão restartQuiz for clicado
 restart_quiz.onclick = () => {
   localStorage.setItem("mostRecentScore", userScore); /*ir para a página final*/
-  return window.location.assign("./src/pages/end.html");
+  return window.location.assign("./end.html");
 };
 
 // se o botão quitQuiz for clicado
@@ -136,7 +136,7 @@ let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 function optionSelected(answer) {
   clearInterval(counter); //limpar contador
   clearInterval(counterLine); //limpar time
-  let userAns = answer.querySelector(".choice-text").textContent; //obtendo a opção selecionada pelo usuário
+  let userAns = answer.querySelector(".choice-text", "InserirResultado()").textContent; //obtendo a opção selecionada pelo usuário
   let correcAns = questions[que_count].answer; //obtendo a resposta correta da matriz
   const allOptions = option_list.children.length; //obtendo todos os itens de opção
   if (userAns == correcAns) {
@@ -151,7 +151,7 @@ function optionSelected(answer) {
     answer.classList.add("incorrect"); //adicionando cor vermelha para corrigir a opção selecionada
     answer.insertAdjacentHTML("beforeend", crossIconTag); //adicionando ícone de cruz para corrigir a opção selecionada
     console.log("Wrong Answer");
-
+    
     for (i = 0; i < allOptions; i++) {
       if (option_list.children[i].textContent == correcAns) {
         //se houver uma opção que corresponda a uma matrizanswer
@@ -165,43 +165,93 @@ function optionSelected(answer) {
     option_list.children[i].classList.add("disabled"); //uma vez que o usuário seleciona uma opção, desativa todas as opções
   }
   next_btn.classList.add("show"); //mostrar o próximo botão se o usuário selecionou qualquer opção
+  InserirResultado()
+}
+
+function InserirResultado() {
+  var pontuação = userScore * 10 ;
+  var idPerfil = sessionStorage.ID_PERFIL;
+
+  fetch(`/quiz/inserirtentativa/${idPerfil}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      // crie um atributo que recebe o valor recuperado aqui
+      RespostaCertaServer: pontuação,
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        console.log("Tentativa inserida com sucesso");
+      } else {
+        alert("Houve um erro ao tentar inserir a  tentativa!");
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+
+  return false;
 }
 
 function showResult() {
-  info_box.classList.remove("activeInfo"); //ocultar caixa de informações
-  quiz_box.classList.remove("activeQuiz"); //ocultar caixa do quiz
-  result_box.classList.add("activeResult"); //mostrar o resultado
-  const scoreText = result_box.querySelector(".score_text");
-  if (userScore > 3) {
-    // se o usuário marcou mais de 3
-    //criando uma nova tag span e passando o número da pontuação do usuário e o número total da pergunta
-    let scoreTag =
-      "<span>E parabéns!!, você fez <p>" +
-      userScore * 10 +
-      "</p> de <p>" +
-      questions.length * 10 +
-      "</p></span>";
-    scoreText.innerHTML = scoreTag; //adicionando nova tag span dentro de score_Text
-  } else if (userScore > 1) {
-    // se o usuário marcou mais de 1
-    let scoreTag =
-      "<span>E legal, você fez  <p>" +
-      userScore * 10 +
-      "</p> de <p>" +
-      questions.length * 10 +
-      "</p></span>";
-    scoreText.innerHTML = scoreTag;
-  } else {
-    // se o usuário marcou menos de 1
-    let scoreTag =
-      "<span>e desculpe , Você fez apenas <p>" +
-      userScore * 10 +
-      "</p> de <p>" +
-      questions.length * 10 +
-      "</p></span>";
-    scoreText.innerHTML = scoreTag;
-  }
+  fetch("/quiz/listarAvaliacao")
+    .then(function (resposta) {
+      if (resposta.ok) {
+        if (resposta.status == 204) {
+          alert("Nenhum resultado encontrado.");
+        }
+        resposta.json().then(function (resposta) {
+          console.log("Dados recebidos: ", JSON.stringify(resposta));
+          for (let c = 0; c <= resposta.length; c++) {
+            info_box.classList.remove("activeInfo"); //ocultar caixa de informações
+            quiz_box.classList.remove("activeQuiz"); //ocultar caixa do quiz
+            result_box.classList.add("activeResult"); //mostrar o resultado
+            const scoreText = result_box.querySelector(".score_text");
+            if (userScore > 3) {
+              // se o usuário marcou mais de 3
+              //criando uma nova tag span e passando o número da pontuação do usuário e o número total da pergunta
+              let scoreTag =
+                "<span>E parabéns!!, você fez <p>" +
+                userScore * 10 +
+                "</p> de <p>" +
+                questions.length * 10 +
+                "</p></span>";
+              scoreText.innerHTML = scoreTag; //adicionando nova tag span dentro de score_Text
+            } else if (userScore > 1) {
+              // se o usuário marcou mais de 1
+              let scoreTag =
+                "<span>E legal, você fez  <p>" +
+                userScore * 10 +
+                "</p> de <p>" +
+                questions.length * 10 +
+                "</p></span>";
+              scoreText.innerHTML = scoreTag;
+            } else {
+              // se o usuário marcou menos de 1
+              let scoreTag =
+                "<span>e desculpe , Você fez apenas <p>" +
+                userScore * 10 +
+                "</p> de <p>" +
+                questions.length * 10 +
+                "</p></span>";
+              scoreText.innerHTML = scoreTag;
+            }
+          }
+        });
+      } else {
+        throw "Houve um erro na API!";
+      }
+    })
+    .catch(function (resposta) {
+      console.error(resposta);
+    });
 }
+
 
 function startTimer(time) {
   counter = setInterval(timer, 1000);
@@ -258,3 +308,4 @@ function queCounter(index) {
     "</p> Questões</span>";
   bottom_ques_counter.innerHTML = totalQueCounTag; //adicionando nova tag span dentro bottom_ques_counter
 }
+

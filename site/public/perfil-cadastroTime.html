@@ -12,7 +12,7 @@
     <title>Challenger</title>
 </head>
 
-<body>
+<body onload="buscarDadoFuncionario()" >
     <main>
 
         <!-- SideBar do Perfil-->
@@ -46,15 +46,23 @@
                     <li>
                         <a href="perfil-quiz.html">
                             <img class="sidebar-icone-lista" width="54" height="54" viewBox="0 0 50 50"
-                                src="./assets/imgs/challenger.png">
+                                src="./assets/imgs/quiz.png">
                             <span class="sidebar-titulo">QUIZ</span>
                         </a>
                     </li>
                     <li>
-                        <a href="indexR6.html">
+                      <a href="comentarios.html">
+                          <img class="sidebar-icone-lista" width="54" height="54" viewBox="0 0 50 50"
+                              src="./assets/imgs/iconAvali.png">
+                          <span class="sidebar-titulo">Avaliação</span>
+                      </a>
+                  </li>
+                    <li>
+                        <a href="index.html">
                             <span class="sidebar-titulo"><img src="./assets/imgs/r6s-y6-logo.webp"></span>
                         </a>
                     </li>
+                   
                 </ul>
             </nav>
         </div>
@@ -150,9 +158,10 @@
                     <div class="estilo-box">
                         <p>Função</p>
                         <select class="combo-funcao" id="inputFuncao">
-                            <option value=""></option>
+                            <option value="Capitão">IGL</option>
                             <option value="Capitão">Capitão</option>
                             <option value="Suporte">Suporte</option>
+                            <option value="Lurker">2º Suporte</option>
                             <option value="Intermediário">Intermediário</option>
                             <option value="Lurker">Lurker</option>
                         </select>
@@ -196,12 +205,12 @@
               resposta.json().then((json) => {
                 console.log(json);
                 //nome da org
-                var nome_Org = json.nomeOrg;
-                titulo_div_empresa.innerHTML = nome_Org;
+                var nome_Organizacao = json.nomeOrganizacao;
+                titulo_div_empresa.innerHTML = nome_Organizacao;
                 subtitulo_div_empresa.remove();
                 inputOrg.remove();
                 nome_org_cadastro.innerHTML = `Nome da Organização`;
-                nome_org_box.innerHTML += nome_Org;
+                nome_org_box.innerHTML += nome_Organizacao;
 
                 //regiao da org
                 var regiao_org = json.regiao;
@@ -209,7 +218,7 @@
                 regiao_org_box.innerHTML += regiao_org;
                 regiao_org_cadastro.innerHTML = "Região";
 
-                //Logradouro da org
+                //Logradouro da org-  
                 var logradouro_empresa = json.logradouro;
                 inputLogradouro.remove();
                 logradouro_org_box.innerHTML += logradouro_empresa;
@@ -248,7 +257,7 @@
 
     function buscarDadoFuncionario() {
       var idOrganizacao = sessionStorage.ID_ORGANIZACAO;
-    fetch(`/funcionario/listarFuncionario/${idEmpresa}`)
+    fetch(`/funcionario/listarFuncionario/${idOrganizacao}`)
       .then(function (resposta) {
         console.log('estou na Buscarfuncionario()',resposta);
         if (resposta.ok) {
@@ -265,7 +274,7 @@
             console.log("Dados recebidos: ", JSON.stringify(resposta));
 
             var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
-            tabelaFuncionarios.innerHTML = "<h3>FUNCIONÁRIOS</h3>";
+            tabelaFuncionarios.innerHTML = "<h3>JOGADORES</h3>";
             for (let i = 0; i < resposta.length; i++) {
               var publicacao = resposta[i];
 
@@ -331,6 +340,7 @@
           empresaNomeServer: orgNomeVar,
           cnpjServer: regiaojVar,
           logradouroServer: logradouroVar,
+          cepServer: cepVar,
           bairroServer: bairroVar,
           complementoVar: complementoVar,
         }),
@@ -339,7 +349,7 @@
           console.log("resposta: ", resposta);
   // Se sucesso, ele atualiza o id da empresa dentro da sessionStorage e atualiza a pág
           if (resposta.ok) {
-            resposta.json().then((idEmpresa) => {
+            resposta.json().then((idOrganizacao) => {
               sessionStorage.ID_ORGANIZACAO = idOrganizacao;
             });
 
@@ -398,7 +408,7 @@
             }, "500");
           } else {
             alert("Houve um erro ao tentar realizar o cadastro!");
-            console.log("respostaaaa: ", resposta, sessionStorage.ID_ORGANIZACAO);
+            console.log("respostaa: ", resposta, sessionStorage.ID_ORGANIZACAO);
           }
         })
         .catch(function (resposta) {
@@ -413,5 +423,5 @@
     }
 
     // chama a função assim que a pagina carrega
-    buscarDadosEmpresa();
+    buscarDadosOrganizacao();
 </script>
