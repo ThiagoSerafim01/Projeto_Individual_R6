@@ -31,10 +31,7 @@ body{
     padding: 10px;
     margin-left: 18%;
     border-radius: 8px;
-    background-image: url(../assets/imgs/loginFundo.jpg);
     background-position: left;
-    color: #fff;
-    
   }
   
   .comentarioFeito{
@@ -43,7 +40,7 @@ body{
     padding: 20px;
     border-radius: 8px;
     width: 80%;
-    margin-left: 15%;
+    margin-left: 18%;
   }
   
   .addComentario{
