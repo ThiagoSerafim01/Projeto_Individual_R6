@@ -259,4 +259,14 @@ a{
     padding: 2vh;
     margin: 0 5vh;
 }
+
+.secao-influencers {
+    width: 100%;
+    height: 160vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
     
